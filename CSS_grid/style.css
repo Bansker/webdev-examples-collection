@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 50px 100px 200px;
+  grid-template-areas: 
+    "a1 a2 a3"
+    "b1 b2 b3"
+    "c1 c2 c3";
+}
+
+.a1{
+  grid-area: "a1";
+  background-color: red;
+}
+.a2{
+  grid-area: "a2";
+  background-color: orangered;
+}
+.a3{
+  grid-area: "a3";
+  background-color: orange;
+}
+
+.b1{
+  grid-area: "b1";
+  background-color: green;
+}
+.b2{
+  grid-area: "b2";
+  background-color: limegreen;
+}
+.b3{
+  grid-area: "b3";
+  background-color: palegreen;
+}
+
+.c1{
+  grid-area: "c1";
+  background-color: blue;
+}
+.c2{
+  grid-area: "c2";
+  background-color: royalblue;
+}
+.c3{
+  grid-area: "c3";
+  background-color: lightblue;
+}

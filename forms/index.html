@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <title>Forms</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    
+    <form action="https://httpbin.org/post" method="post">
+      <fieldset>
+        <legend>Contact Details</legend>
+          
+        <ul>
+          <li>
+            <label for="gender">Gender</label>
+            <select name="user_gender" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="diverse">Diverse</option>
+              <option value="choose" selected>Choose Gender</option>
+            </select>
+          </li>
+          
+          <li>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="user_name">
+          </li>
+          
+          <li>
+            <label for="mail">Mail</label>
+            <input type="email" id="mail" name="user_email">
+          </li>
+        </ul>
+      </fieldset>
+      
+      <fieldset>
+        <legend>Address Details</legend>
+        
+        <ul>
+          <li>
+             <label for="street">Street</label>
+             <input type="text" id="street" name="user_street">
+          </li>
+          
+          <li>
+            <label for="postcode">Postcode</label>
+            <input type="text" id="postcode" name="user_postcode">
+          </li>
+          
+          <li>
+            <label for="city">City</label>
+            <input type="text" id="city" name="user_city">
+          </li>
+          
+          <li>
+            <label for="country">Country</label>
+            <input type="country" id="country" name="user_country">
+          </li>
+        </ul>
+      </fieldset>
+      
+      <fieldset>
+        <legend>More Stuff</legend>
+        
+        <fieldset>
+          <legend>Red or Blue!</legend>
+          
+          <ul>
+            <li class="flex-row">
+              <input type="radio" id="rad1" name="radio_group_1" value="Blue">
+              <label for="rad1">Blue</label>
+            </li>
+            
+            <li class="flex-row">
+              <input type="radio" id="rad2" name="radio_group_1" value="Red">
+              <label for="rad2">Red</label>
+            </li>
+          </ul>
+        </fieldset>
+        
+        <fieldset>
+          <legend>Red... AND Blue?</legend>
+          
+          <ul>
+            <li class="flex-row">
+              <input type="checkbox" id="cb1" name="color1" value="Red">
+              <label for="cb1">Red</label>
+            </li>
+            
+            <li class="flex-row">
+              <input type="checkbox" id="cb2" name="color2" value="Blue">
+              <label for="cb2">Blue</label>
+            </li>
+          </ul>
+        </fieldset>
+          
+        
+      </fieldset>
+      
+      
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+
+</html>

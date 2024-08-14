@@ -1,0 +1,44 @@
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+  /*outline: 1px solid red;*/
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  height: 100vh;
+  padding: 20px;
+  background: #FFFFFF;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 20px;
+}
+
+.range-slider {
+  appearance: none;
+  width: 100%;
+  height: 30px;
+  background: #3964F2;
+  outline: 2px solid #192D6E;
+  
+  border-radius: 1rem;
+}
+
+.range-slider::-webkit-slider-thumb{
+  appearance: none;
+  height: 30px;
+  width: 30px;
+  background: #FFFFFF;
+  
+  border-radius: 1rem;
+}

@@ -1,0 +1,68 @@
+:root{
+  --base: 75px;
+}
+
+*,
+*::before,
+*::after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.wrapper{
+  padding: 10px;
+  height: 100vh;
+  background-color:#CED2FF;
+}
+
+
+.flex-container{
+  display: flex;
+  height: 100px;
+  width:400px;
+  outline: 2px solid black;
+}
+
+
+.flex-item{
+  flex: 1;
+  flex-grow: 0;
+  width: var(--base);
+  flex-basis: var(--base);
+  height: 100px;
+}
+
+.inline{
+  display: inline-flex
+}
+
+.blue{
+  background-color: #8AA3FC;
+}
+
+.red{
+  background-color: #FC8A8A;
+}
+
+.green{
+  background-color: #8DFC8A;
+}
+
+.violet{
+  background-color: #B28AFC;
+}
+
+.shrink{
+  flex-shrink: 2;
+}
+
+.grow{
+  flex-grow: 2;
+}
+
+.btn{
+  margin-top: 20px;
+  padding: 20px;
+}
