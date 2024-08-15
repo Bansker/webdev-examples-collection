@@ -11,6 +11,8 @@ osc.frequency.value = 130.8;
 
 osc.start(0); */
 
+
+
 btnPlay.addEventListener('click', () => {
   sound.addEventListener('mouseover', () => gain.connect(context.destination));
 
@@ -23,6 +25,10 @@ btnPlay.addEventListener('click', () => {
   osc.connect(gain);
   osc.frequency.value = 261.63; //Play middle C
   osc.start();
+
+  // use this instead of connecting / disconnecting to turn off tone (prevents clicking sound)
+  //gain.gain.exponentialRampToValueAtTime(0.00001, context.currentTime + 0.04)
+
 });
 
 
