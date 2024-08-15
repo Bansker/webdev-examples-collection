@@ -1,1 +1,1 @@
-# webdev-snippet-collection
+# webdev-examples-collection
