@@ -35,6 +35,11 @@
             <label for="mail">Mail</label>
             <input type="email" id="mail" name="user_email">
           </li>
+          
+          <li>
+            <label for="passw">Whats your favourite password?</label>
+            <input type="password" name="user_fav_password" id="passw">
+          </li>
         </ul>
       </fieldset>
       
@@ -65,40 +70,56 @@
       </fieldset>
       
       <fieldset>
-        <legend>More Stuff</legend>
+        <legend>Choose!</legend>
         
-        <fieldset>
-          <legend>Red or Blue!</legend>
-          
-          <ul>
-            <li class="flex-row">
-              <input type="radio" id="rad1" name="radio_group_1" value="Blue">
-              <label for="rad1">Blue</label>
-            </li>
+        <ul>
+          <li>
+            <fieldset>
+              <legend>Red or Blue!</legend>
             
-            <li class="flex-row">
-              <input type="radio" id="rad2" name="radio_group_1" value="Red">
-              <label for="rad2">Red</label>
-            </li>
-          </ul>
-        </fieldset>
-        
-        <fieldset>
-          <legend>Red... AND Blue?</legend>
-          
-          <ul>
-            <li class="flex-row">
-              <input type="checkbox" id="cb1" name="color1" value="Red">
-              <label for="cb1">Red</label>
-            </li>
+              <ul>
+                <li class="flex-row">
+                  <input type="radio" id="rad1" name="radio_group_1" value="Red">
+                  <label for="rad1">Red</label>
+                </li>
             
-            <li class="flex-row">
-              <input type="checkbox" id="cb2" name="color2" value="Blue">
-              <label for="cb2">Blue</label>
-            </li>
-          </ul>
-        </fieldset>
+                <li class="flex-row">
+                  <input type="radio" id="rad2" name="radio_group_1" value="Blue">
+                  <label for="rad2">Blue</label>
+                </li>
+              </ul>
+            </fieldset>
+          </li>
           
+          <li>
+            <fieldset>
+              <legend>Red... AND Blue?</legend>
+            
+              <ul>
+                <li class="flex-row">
+                  <input type="checkbox" id="cb1" name="user_color_red" value="on">
+                  <label for="cb1">Red</label>
+                </li>
+            
+                <li class="flex-row">
+                  <input type="checkbox" id="cb2" name="user_color_blue" value="on">
+                  <label for="cb2">Blue</label>
+                </li>
+              </ul>
+            </fieldset>
+          </li>
+          
+          <li>
+            <label for="color-picker">Your Fav Color</label>
+            <input type="color" name="user_fav_color" id="color-picker">
+          </li>
+          
+          <li>
+            <label for="date-picker">The best date is:</label>
+            <input type="date" name="user_date" id="date-picker">
+          </li>
+          
+        </ul>
         
       </fieldset>
       
