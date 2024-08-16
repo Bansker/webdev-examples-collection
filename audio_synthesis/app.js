@@ -18,21 +18,22 @@ btnActivate.addEventListener('click', (e) => {
 
   osc.type = 'sine';
   osc.connect(gain);
-  osc.frequency.value = 261.63; //Play middle C
+  osc.frequency.value = 261.63; // Middle C
   gain.gain.value = 0;
   gain.connect(context.destination);
   osc.start();
 
 
 
-/*   let lfo = context.createOscillator()
+  let lfo = context.createOscillator()
   let lfoGain = context.createGain()
 
-  lfo.type = 'sine';
+  lfo.type = 'triangle';
   lfo.connect(lfoGain);
-  lfo.frequency.value = .5;
+  lfo.frequency.value = 329.6; // Middle E
+  lfoGain.gain.value = 0;
   lfoGain.connect(context.destination);
-  lfo.start() */
+  lfo.start()
 
 
 
@@ -40,19 +41,21 @@ btnActivate.addEventListener('click', (e) => {
   document.addEventListener('keydown', (e) => {
     if(e.key == 'a') {
       gain.gain.linearRampToValueAtTime(1, context.currentTime + 0.05)
-      l(osc.frequency.value);
+      lfoGain.gain.linearRampToValueAtTime(0.5, context.currentTime + 0.05)
     }
   });
   
   document.addEventListener('keyup', (e) => {
     if(e.key) {
       gain.gain.linearRampToValueAtTime(0.00001, context.currentTime + 0.05)
+      lfoGain.gain.linearRampToValueAtTime(0.00001, context.currentTime + 0.05)
     }
   });
 
   rangeFreq.addEventListener('input', (e) => {
     outFreq.textContent = e.target.value;
     osc.frequency.value = e.target.value;
+    lfo.frequency.value = e.target.value;
   });
 });
 
