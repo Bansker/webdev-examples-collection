@@ -44,7 +44,7 @@ btnActivate.addEventListener('click', (e) => {
 
   document.addEventListener('keydown', (e) => {
     
-    switch(e.key) {
+    switch(e.key.toLowerCase()) {
       case 'a': // C
         osc.frequency.value = baseNote; 
         gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
@@ -118,13 +118,6 @@ btnActivate.addEventListener('click', (e) => {
         if(baseNote < 1046.52) baseNote *= 2;
         break;
     }
-
-    outFreq.textContent = osc.frequency.value + ' Hz';
-
-
-/*     if(e.key == 'a') {
-      gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime)
-    } */
   });
   
   document.addEventListener('keyup', (e) => {
@@ -132,11 +125,6 @@ btnActivate.addEventListener('click', (e) => {
       gain.gain.linearRampToValueAtTime(0.00001, context.currentTime + volumeRampTime)
       lfoGain.gain.value = 0;
     }
-  });
-
-  rangeFreq.addEventListener('input', (e) => {
-    outFreq.textContent = e.target.value;
-    osc.frequency.value = e.target.value;
   });
 });
 
