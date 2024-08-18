@@ -10,139 +10,81 @@ function calculateFreq(rootNoteFreq, targetNoteDelta) {
 }
 
 
+
 btnActivate.addEventListener('click', (e) => {
+  e.target.textContent = 'Active';
 
   let baseNote = 261.63; // Middle C
 
-  e.target.textContent = 'Active';
-
+  
   let context = new AudioContext();
-  let osc = context.createOscillator();
+
+  // OSC 1
+  let osc1 = context.createOscillator();
   let gain = context.createGain();
 
-  osc.type = 'sine';
-  osc.connect(gain);
-  osc.frequency.value = baseNote; 
+  osc1.type = 'sine';
+  osc1.connect(gain);
+  osc1.frequency.value = baseNote; 
   gain.gain.value = 0;
   gain.connect(context.destination);
-  osc.start();
+  osc1.start();
 
 
+  // OSC 2
+  let osc2 = context.createOscillator()
+  let osc2Gain = context.createGain()
 
-  let lfo = context.createOscillator()
-  let lfoGain = context.createGain()
-
-  lfo.type = 'triangle';
-  lfo.connect(lfoGain);
-  lfo.frequency.value = 329.6; // Middle E
-  lfoGain.gain.value = 0;
-  lfoGain.connect(context.destination);
-  lfo.start()
+  osc2.type = 'triangle';
+  osc2.connect(osc2Gain);
+  osc2.frequency.value = 329.6; // Middle E
+  osc2Gain.gain.value = 0;
+  osc2Gain.connect(context.destination);
+  osc2.start()
 
   
   const volumeRampTime = 0.05;
 
+
+
+  const keys = ['a',      // C  Pos 0 (Root note)
+                    'w',  // C# Pos 1
+                's',      // D  etc..
+                    'e',  // D#
+                'd',      // E
+                'f',      // F
+                    't',  // F#
+                'g',      // G
+                    'z',  // G#
+                'h',      // A
+                    'u',  // A#
+                'j',      // B
+                'k']      // C' Pos 12 (Root octave)
+
   document.addEventListener('keydown', (e) => {
-    
-    switch(e.key.toLowerCase()) {
-      case 'a': // C
-        osc.frequency.value = baseNote; 
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
 
-      case 'w': // C#
-        osc.frequency.value = calculateFreq(baseNote, 1);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
+    let keyPosNumber = keys.indexOf(e.key);
 
-      case 's': // D
-        osc.frequency.value = calculateFreq(baseNote, 2);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
+    if(keyPosNumber !== -1) {
+      osc1.frequency.value = calculateFreq(baseNote, keyPosNumber);
+      gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
+    } 
 
-      case 'e': // D#
-        osc.frequency.value = calculateFreq(baseNote, 3);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
+    // Octave up/down Transporting
+    if(e.key === 'y') {
+      if(baseNote > 65.41) baseNote /= 2;
+    }
 
-      case 'd': // E
-        osc.frequency.value = calculateFreq(baseNote, 4);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'f': // F
-        osc.frequency.value = calculateFreq(baseNote, 5);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 't': // F#
-        osc.frequency.value = calculateFreq(baseNote, 6);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'g': // G
-        osc.frequency.value = calculateFreq(baseNote, 7);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'z': // G#
-        osc.frequency.value = calculateFreq(baseNote, 8);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'h': // A
-        osc.frequency.value = calculateFreq(baseNote, 9);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'u': // A#
-        osc.frequency.value = calculateFreq(baseNote, 10);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'j': // B
-        osc.frequency.value = calculateFreq(baseNote, 11);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'k': // C'
-        osc.frequency.value = calculateFreq(baseNote, 12);
-        gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
-        break;
-
-      case 'y':
-        if(baseNote > 65.41) baseNote /= 2;
-        break;
-
-      case 'x':
-        if(baseNote < 1046.52) baseNote *= 2;
-        break;
+    if(e.key === 'x') {
+      if(baseNote < 1046.52) baseNote *= 2;
     }
   });
   
   document.addEventListener('keyup', (e) => {
     if(e.key) {
       gain.gain.linearRampToValueAtTime(0.00001, context.currentTime + volumeRampTime)
-      lfoGain.gain.value = 0;
+      osc2Gain.gain.value = 0;
     }
   });
 });
 
-
-
-
-/* btnActivate.addEventListener('click', (e) =>{
-
-  if(e.target.textContent == 'PLAY') {
-    e.target.textContent = 'STOP';
-    osc.connect(gain);
-    gain.connect(context.destination);
-
-
-  } else {
-    e.target.textContent = 'PLAY';
-    osc.disconnect(gain);
-    gain.disconnect(context.destination);
-
-  }
-}); */
