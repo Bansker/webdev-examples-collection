@@ -14,7 +14,7 @@ function calculateFreq(rootNoteFreq, targetNoteDelta) {
 btnActivate.addEventListener('click', (e) => {
   e.target.textContent = 'Active';
 
-  let baseNote = 261.63; // Middle C
+  
 
   
   let context = new AudioContext();
@@ -22,10 +22,11 @@ btnActivate.addEventListener('click', (e) => {
   // OSC 1
   let osc1 = context.createOscillator();
   let gain = context.createGain();
+  let osc1BaseNote = 261.63; // Middle C
 
   osc1.type = 'sine';
   osc1.connect(gain);
-  osc1.frequency.value = baseNote; 
+  osc1.frequency.value = osc1BaseNote; 
   gain.gain.value = 0;
   gain.connect(context.destination);
   osc1.start();
@@ -34,10 +35,11 @@ btnActivate.addEventListener('click', (e) => {
   // OSC 2
   let osc2 = context.createOscillator()
   let osc2Gain = context.createGain()
+  let osc2BaseNote = 261.63; // Middle C
 
   osc2.type = 'triangle';
   osc2.connect(osc2Gain);
-  osc2.frequency.value = 329.6; // Middle E
+  osc2.frequency.value = osc2BaseNote;
   osc2Gain.gain.value = 0;
   osc2Gain.connect(context.destination);
   osc2.start()
@@ -66,17 +68,17 @@ btnActivate.addEventListener('click', (e) => {
     let keyPosNumber = keys.indexOf(e.key);
 
     if(keyPosNumber !== -1) {
-      osc1.frequency.value = calculateFreq(baseNote, keyPosNumber);
+      osc1.frequency.value = calculateFreq(osc1BaseNote, keyPosNumber);
       gain.gain.linearRampToValueAtTime(1, context.currentTime + volumeRampTime);
     } 
 
     // Octave up/down Transporting
     if(e.key === 'y') {
-      if(baseNote > 65.41) baseNote /= 2;
+      if(osc1BaseNote > 65.41) osc1BaseNote /= 2;
     }
 
     if(e.key === 'x') {
-      if(baseNote < 1046.52) baseNote *= 2;
+      if(osc1BaseNote < 1046.52) osc1BaseNote *= 2;
     }
   });
   
