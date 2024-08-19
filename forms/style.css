@@ -54,6 +54,17 @@ ul li:not(:last-of-type) {
 }
 
 
+input[type="text"]:invalid,
+input[type="email"]:invalid {
+  outline: 2px solid red;
+}
+
+input[type="text"]:valid,
+input[type="email"]:valid {
+  outline: 2px solid #00b400;
+}
+
+
 .wrapper {
   display: flex;
   flex-direction: column;
