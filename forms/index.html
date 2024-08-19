@@ -40,6 +40,11 @@
             <label for="passw">Whats your favourite password?</label>
             <input type="password" name="user_fav_password" id="passw">
           </li>
+          
+          <li>
+            <label for="about_user">Tell me more about yourself</label>
+            <textarea name="user_more_information" id="about_user" rows="10"></textarea>
+          </li>
         </ul>
       </fieldset>
       
@@ -115,9 +120,28 @@
           </li>
           
           <li>
+            <label for="select-color">Choosing Between Two Colors: The Dropdown Edition!</label>
+            <select selected name="user_color______again" id="select-color">
+              <option value="Choose">Choose</option>
+              <optgroup label="Normal old colors">
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+              </optgroup>
+              <optgroup label="Woah, shiny, NEW colors!">
+                <option value="Purple?????????">Purple?????????</option>
+                <option value="Aw, man thats just red and blue mixed together">Aw, man thats just red and blue mixed together</option>
+              
+              </optgroup>
+              
+            </select>
+          </li>
+          
+          <li>
             <label for="date-picker">The best date is:</label>
             <input type="date" name="user_date" id="date-picker">
           </li>
+          
+          
           
         </ul>
         
