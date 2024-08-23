@@ -16,12 +16,12 @@ const downloadBtn  = document.querySelector('.button');
 const downloadLink = document.querySelector('.download-link');
 
 const imgTextScale   = 0.1;
-let imgTextboxHeight = imgSubject.height * 0.15;
+const imgTextboxHeight = imgSubject.height * 0.15;
 
 const imgSubjectNaturalHeight = imgSubject.naturalHeight;
 const imgSubjectNaturalWidth  = imgSubject.naturalWidth;
 
-
+imgContainer.style.height = 500 + 'px';
 
 imgTextboxStyles = `
   display        : flex;
