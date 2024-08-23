@@ -15,7 +15,7 @@ const imgText      = document.querySelector('.img-text');
 const downloadBtn  = document.querySelector('.button');
 const downloadLink = document.querySelector('.download-link');
 
-const imgTextScale     = 0.1;
+const imgTextScale   = 0.1;
 let imgTextboxHeight = imgSubject.height * 0.15;
 
 const imgSubjectNaturalHeight = imgSubject.naturalHeight;
@@ -42,21 +42,22 @@ imgTextboxStyles = `
 imgTextbox.style.cssText = imgTextboxStyles;
 
 
-downloadBtn.addEventListener('click', () => {
-  imgContainer.style.height = `${imgSubjectNaturalHeight}px`;
+downloadBtn.addEventListener('click', imgDownloader());
+
+function imgDownloader() {
+ /* imgContainer.style.height = `${imgSubjectNaturalHeight}px`;
   let imgTextboxHeight = imgSubject.height * 0.15;
   imgTextbox.style.height = `${imgTextboxHeight}px`;
   imgTextbox.style.top = `-${imgTextboxHeight}px`
-  imgTextbox.style.fontSize = `${imgTextboxHeight * 0.24}px`
-
-
-  html2canvas(imgContainer, {allowTaint: true}).then((canvas) => {
+  imgTextbox.style.fontSize = `${imgTextboxHeight * 0.24}px`*/
+  
+  
+  html2canvas(imgContainer, { allowTaint: true }).then((canvas) => {
     downloadLink.download = "mitarbeiterin.jpg";
     downloadLink.href = canvas.toDataURL();
     downloadLink.target = '_blank';
-    downloadLink.click();
+    //downloadLink.click();
   });
-
-});
+}
 
 
