@@ -11,15 +11,17 @@ const imgText      = document.querySelector('.img-text');
 const downloadBtn  = document.querySelector('.button');
 const downloadLink = document.querySelector('.download-link');
 
-imgContainer.style.height = 800 + 'px';
 
-const imgTextScale     = 0.1;
-const imgTextboxHeight = imgSubject.height * 0.15;
+
 
 const imgSubjectNaturalHeight = imgSubject.naturalHeight;
 const imgSubjectNaturalWidth  = imgSubject.naturalWidth;
 
+imgContainer.style.height = 1200 + 'px';
 //imgContainer.style.height = imgSubjectNaturalHeight + 'px';
+
+const imgTextScale     = 0.1;
+const imgTextboxHeight = imgSubject.height * 0.15;
 
 imgTextboxStyles = `
   display        : flex;
@@ -27,11 +29,12 @@ imgTextboxStyles = `
   align-items    : center;
   text-align     : center;
   font-size      : ${imgTextboxHeight * 0.24}px;
+  line-height    : 3rem;
 
   position: relative;
   top     : -${imgTextboxHeight}px;
   height  :  ${imgTextboxHeight}px;
-  width   : 100%;
+  width   :  899px;
 
   background: white;
   color     : black;
