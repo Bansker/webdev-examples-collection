@@ -30,6 +30,7 @@ imgTextboxStyles = `
   text-align     : center;
   font-size      : ${imgTextboxHeight * 0.24}px;
   line-height    : 3rem;
+  padding: 5px;
 
   position: relative;
   top     : -${imgTextboxHeight}px;
