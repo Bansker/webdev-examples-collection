@@ -16,6 +16,12 @@
     "c1 c2 c3";
 }
 
+.center-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .a1{
   grid-area: "a1";
   background-color: red;
